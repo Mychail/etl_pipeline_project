@@ -1,8 +1,13 @@
+---
   name: Lint
   
-  on:  # yamllint disable-line rule:truthy
+  on:
     push:
+      branches:
+        - main
     pull_request:
+      branches:
+        - main
   
   jobs:
     build:
@@ -19,12 +24,12 @@
         - name: Checkout code
           uses: actions/checkout@v4
           with:
-            # super-linter needs the full git history to get the
-            # list of files that changed across commits
             fetch-depth: 0
+            ref: main  # Specify the branch name to checkout
   
         - name: Super-linter
           uses: super-linter/super-linter@v6.0.0  # x-release-please-version
           env:
             # To report GitHub Actions status checks
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
