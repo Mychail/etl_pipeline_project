@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 /cloud infrastructure
 /utils
+*terraform*
+*utils
